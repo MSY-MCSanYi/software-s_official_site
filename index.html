@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>分类·软件官网导航（新增123云盘Adobe免费版）</title>
+    <!-- 字体 Inter & Font Awesome 6 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f0f7fd;
+            color: #1a2b4a;
+            min-height: 100vh;
+            padding: 30px 20px;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .page-header h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            background: linear-gradient(145deg, #1e2b5e, #2563eb);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 16px;
+        }
+
+        .page-header p {
+            font-size: 1.3rem;
+            color: #2c405c;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            display: inline-block;
+            padding: 10px 30px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.8);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+        }
+
+        .safety-banner {
+            background: #dbeafecc;
+            backdrop-filter: blur(8px);
+            border-radius: 80px;
+            padding: 16px 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            margin-bottom: 40px;
+            border: 1px solid white;
+            font-weight: 500;
+        }
+
+        .safety-banner .badge {
+            background: #1e3a8a;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .safety-banner .hint {
+            color: #1e2f5a;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 12px 18px;
+            margin-bottom: 48px;
+        }
+
+        .category-btn {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.9);
+            padding: 12px 28px;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e2f5a;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .category-btn i {
+            font-size: 1.2rem;
+            color: #3b5f9e;
+        }
+
+        .category-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+            box-shadow: 0 10px 20px -5px #1e3a8a80;
+        }
+
+        .category-btn.active i {
+            color: white;
+        }
+
+        .category-btn:hover {
+            background: white;
+            transform: translateY(-2px);
+        }
+
+        .software-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 28px;
+            margin-bottom: 60px;
+            transition: 0.3s;
+        }
+
+        .soft-card {
+            background: rgba(255,255,255,0.8);
+            backdrop-filter: blur(12px);
+            border-radius: 36px;
+            padding: 24px 24px 28px;
+            border: 1px solid rgba(255,255,255,0.9);
+            box-shadow: 0 20px 30px -10px rgba(0,30,70,0.15);
+            transition: all 0.25s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .soft-card:hover {
+            transform: translateY(-6px);
+            background: rgba(255,255,255,0.95);
+            box-shadow: 0 25px 40px -12px #1e3a8a70;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 16px;
+        }
+
+        .icon-bg {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(145deg, #2563eb, #7c3aed);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 14px -4px #2563eb80;
+            flex-shrink: 0;
+            overflow: hidden;
+        }
+
+        .icon-bg img {
+            width: 70%;
+            height: 70%;
+            object-fit: contain;
+        }
+
+        .soft-name {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #102a44;
+            line-height: 1.2;
+        }
+
+        .soft-category-tag {
+            background: #e0e9f5;
+            border-radius: 30px;
+            padding: 6px 16px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #1e3f70;
+            display: inline-block;
+            margin: 8px 0 12px;
+            width: fit-content;
+            border: 1px solid #ffffff;
+        }
+
+        .soft-desc {
+            color: #364f6b;
+            font-size: 0.95rem;
+            margin: 6px 0 16px;
+            flex: 1;
+            line-height: 1.6;
+        }
+
+        .domain-row {
+            background: #edf3fc;
+            border-radius: 40px;
+            padding: 10px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin: 10px 0 18px;
+            border: 1px solid white;
+        }
+
+        .domain-name {
+            font-weight: 500;
+            color: #1a3563;
+            font-family: monospace;
+            word-break: break-all;
+            padding: 0 6px;
+            font-size: 0.9rem;
+        }
+
+        .copy-domain {
+            background: white;
+            border: none;
+            color: #4f658d;
+            cursor: pointer;
+            font-size: 1.1rem;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+
+        .copy-domain:hover {
+            background: #e0ebff;
+            color: #2563eb;
+        }
+
+        .copy-domain.success {
+            background: #22c55e;
+            color: white;
+        }
+
+        .visit-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #e9f0fe;
+            border-radius: 60px;
+            padding: 14px 8px;
+            text-decoration: none;
+            color: #1d3d78;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: 0.25s;
+            border: 1px solid white;
+            border-bottom: 3px solid #b7c9e2;
+            margin-top: 8px;
+        }
+
+        .visit-btn:hover {
+            background: #2563eb;
+            color: white;
+            border-bottom-color: #0f2b62;
+        }
+
+        .visit-btn:hover i {
+            transform: translateX(4px);
+        }
+
+        .visit-btn i {
+            transition: transform 0.2s;
+        }
+
+        .no-result {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(8px);
+            border-radius: 60px;
+            font-size: 1.4rem;
+            color: #52688a;
+            border: 1px solid white;
+        }
+
+        .footer-note {
+            text-align: center;
+            padding: 30px 20px 10px;
+            border-top: 1px dashed #b0c8e0;
+            color: #52688a;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 600px) {
+            .page-header h1 {
+                font-size: 2.4rem;
+            }
+            .category-btn {
+                padding: 8px 18px;
+                font-size: 0.95rem;
+            }
+        }
+
+        [data-tooltip] {
+            position: relative;
+            cursor: pointer;
+        }
+        [data-tooltip]:before {
+            content: attr(data-tooltip);
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            white-space: nowrap;
+            display: none;
+            z-index: 100;
+        }
+        [data-tooltip]:hover:before {
+            display: block;
+        }
+        .soft-category-tag i {
+            margin-right: 4px;
+            font-size: 0.7rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="page-header">
+            <h1><i class="fa-regular fa-compass"></i> 分类·软件官网导航</h1>
+            <p><i class="fa-regular fa-circle-check" style="color:#2e7d32;"></i> 新增123云盘Adobe免费版（非官方）</p>
+        </div>
+
+        <div class="safety-banner">
+            <span class="badge"><i class="fa-solid fa-shield"></i> 安全导航</span>
+            <span class="hint"><i class="fa-regular fa-eye"></i> 官方链接为主，第三方资源请自行甄别</span>
+        </div>
+
+        <div class="category-tabs" id="categoryTabs"></div>
+        <div class="software-grid" id="softwareGrid"></div>
+
+        <div class="footer-note">
+            <p><i class="fa-regular fa-heart" style="color:#e35f5f;"></i> 安全导航 · 请始终核实域名后缀 · 双源图标保障</p>
+        </div>
+    </div>
+
+    <script>
+        (function() {
+            // 软件数据 —— 已添加123云盘Adobe免费版，使用123pan.com图标
+            const softwareList = [
+                // 杀毒软件
+                { name: 'Malwarebytes', domain: 'malwarebytes.com', url: 'https://www.malwarebytes.com', category: 'security', categoryName: '杀毒软件', color: '#232e4d', desc: '专业反恶意软件，防护勒索病毒与木马，轻量高效。' },
+                { name: 'Bitdefender', domain: 'bitdefender.com', url: 'https://www.bitdefender.com', category: 'security', categoryName: '杀毒软件', color: '#ed1c24', desc: '老牌安全套件，多层防御，隐私保护与性能优化。' },
+                { name: 'Kaspersky', domain: 'kaspersky.com', url: 'https://www.kaspersky.com', category: 'security', categoryName: '杀毒软件', color: '#0066b3', desc: '卡巴斯基安全软件，全球领先的病毒防护与隐私工具。' },
+                { name: '360极速版', domain: '360.cn', url: 'https://www.360.cn/', category: 'security', categoryName: '杀毒软件', color: '#2a7de1', desc: '360安全卫士极速版，轻快、无广告，核心防护能力。' },
+                { name: '火绒安全', domain: 'huorong.cn', url: 'https://www.huorong.cn/', category: 'security', categoryName: '杀毒软件', color: '#f15a24', desc: '轻量级终端安全软件，强悍的恶意软件查杀与防御。' },
+                
+                // 代码工具
+                { name: 'VS Code', domain: 'code.visualstudio.com', url: 'https://code.visualstudio.com', category: 'dev', categoryName: '代码工具', color: '#007acc', desc: '免费开源代码编辑器，支持几乎所有语言与调试。' },
+                { name: 'Sublime Text', domain: 'sublimetext.com', url: 'https://www.sublimetext.com', category: 'dev', categoryName: '代码工具', color: '#ff9800', desc: '轻量、快速、高度可定制的代码与文本编辑器。' },
+                { name: 'JetBrains Toolbox', domain: 'jetbrains.com', url: 'https://www.jetbrains.com/toolbox/', category: 'dev', categoryName: '代码工具', color: '#000000', desc: 'IntelliJ IDEA, PyCharm 等IDE的集成管理工具。' },
+                
+                // Adobe系列
+                { name: 'Adobe Photoshop', domain: 'adobe.com', url: 'https://www.adobe.com/products/photoshop.html', category: 'adobe', categoryName: 'Adobe系列', color: '#31a8ff', desc: '专业图像合成与设计软件，行业标准。' },
+                { name: 'Adobe Premiere Pro', domain: 'adobe.com', url: 'https://www.adobe.com/products/premiere.html', category: 'adobe', categoryName: 'Adobe系列', color: '#9999ff', desc: '专业视频剪辑与后期制作，强大时间线。' },
+                { name: 'Adobe Illustrator', domain: 'adobe.com', url: 'https://www.adobe.com/products/illustrator.html', category: 'adobe', categoryName: 'Adobe系列', color: '#f15a24', desc: '矢量图形绘制，LOGO、插画、印刷设计必备。' },
+                { name: 'Adobe Audition', domain: 'adobe.com', url: 'https://www.adobe.com/products/audition.html', category: 'adobe', categoryName: 'Adobe系列', color: '#9999cc', desc: '专业音频编辑与混音软件，提供强大的音频修复和降噪工具。' },
+                // 新增123云盘Adobe免费版（使用123pan.com图标，链接为用户提供的123865.com）
+                { name: 'Adobe软件系列免费版', domain: '123pan.com', url: 'https://www.123865.com/s/i5hBjv-wqmnd', category: 'adobe', categoryName: 'Adobe系列', color: '#ff9f4b', desc: '123云盘分享的Adobe免费版合集（非官方渠道，请自行辨别安全）' },
+                
+                // 办公协作
+                { name: 'Notion', domain: 'notion.so', url: 'https://www.notion.so', category: 'office', categoryName: '办公协作', color: '#000000', desc: '一体化笔记、数据库、项目协作。' },
+                { name: 'Slack', domain: 'slack.com', url: 'https://slack.com', category: 'office', categoryName: '办公协作', color: '#4a154b', desc: '团队沟通与工作流集成。' },
+                { name: 'Zoom', domain: 'zoom.us', url: 'https://zoom.us', category: 'office', categoryName: '办公协作', color: '#2d8cff', desc: '视频会议与远程协作。' },
+                { name: 'WPS Office', domain: 'wps.com', url: 'https://www.wps.com', category: 'office', categoryName: '办公协作', color: '#2d6db5', desc: '国产办公套件，兼容Microsoft Office格式，支持PDF转换。' },
+                { name: 'OBS Studio', domain: 'obsproject.com', url: 'https://obsproject.com', category: 'office', categoryName: '办公协作', color: '#302e2e', desc: '免费开源的直播和录屏软件，广泛用于视频录制与推流。' },
+
+                // 浏览器分类
+                { name: 'Google Chrome', domain: 'chrome.google.com', url: 'https://www.google.com/chrome/', category: 'browser', categoryName: '浏览器', color: '#4285F4', desc: '快速、安全的现代浏览器，支持扩展同步与强大生态。' },
+                { name: 'Microsoft Edge', domain: 'microsoft.com', url: 'https://www.microsoft.com/edge', category: 'browser', categoryName: '浏览器', color: '#0078d7', desc: '基于Chromium的浏览器，与微软服务深度集成，性能优秀。' },
+                { name: 'Firefox', domain: 'firefox.com', url: 'https://www.mozilla.org/firefox/', category: 'browser', categoryName: '浏览器', color: '#ff7139', desc: '注重隐私的开源浏览器，丰富的扩展与自定义选项。' }
+            ];
+
+            const categories = [
+                { id: 'all', name: '全部', icon: 'fa-regular fa-star' },
+                { id: 'security', name: '杀毒软件', icon: 'fa-solid fa-shield' },
+                { id: 'dev', name: '代码工具', icon: 'fa-solid fa-code' },
+                { id: 'adobe', name: 'Adobe系列', icon: 'fa-brands fa-adobe' },
+                { id: 'office', name: '办公协作', icon: 'fa-regular fa-message' },
+                { id: 'browser', name: '浏览器', icon: 'fa-solid fa-window-maximize' }
+            ];
+
+            const tabsContainer = document.getElementById('categoryTabs');
+            const gridContainer = document.getElementById('softwareGrid');
+            let currentCategory = 'all';
+
+            function renderTabs() {
+                tabsContainer.innerHTML = '';
+                categories.forEach(cat => {
+                    const btn = document.createElement('div');
+                    btn.className = `category-btn ${currentCategory === cat.id ? 'active' : ''}`;
+                    btn.setAttribute('data-category', cat.id);
+                    btn.innerHTML = `<i class="${cat.icon}"></i> ${cat.name}`;
+                    btn.addEventListener('click', () => {
+                        currentCategory = cat.id;
+                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                        btn.classList.add('active');
+                        filterAndRenderCards();
+                    });
+                    tabsContainer.appendChild(btn);
+                });
+            }
+
+            function filterAndRenderCards() {
+                const filtered = currentCategory === 'all' 
+                    ? softwareList 
+                    : softwareList.filter(soft => soft.category === currentCategory);
+                
+                if (filtered.length === 0) {
+                    gridContainer.innerHTML = `<div class="no-result"><i class="fa-regular fa-face-frown"></i> 暂无该类软件，试试其他分类吧</div>`;
+                    return;
+                }
+
+                let cardsHtml = '';
+                filtered.forEach(soft => {
+                    const color = soft.color || '#2563eb';
+                    const primaryIconUrl = `https://icon.horse/icon/${soft.domain}`;
+                    const fallbackIconUrl = `https://www.google.com/s2/favicons?domain=${soft.domain}&sz=64`;
+
+                    cardsHtml += `
+                        <div class="soft-card" data-category="${soft.category}">
+                            <div class="card-header">
+                                <div class="icon-bg" style="background: linear-gradient(135deg, ${color}, #7c3aed);">
+                                    <img src="${primaryIconUrl}" 
+                                         alt="${soft.name} logo"
+                                         data-retry="0"
+                                         data-primary="${primaryIconUrl}"
+                                         data-fallback="${fallbackIconUrl}"
+                                         onerror="handleIconError(this)"
+                                         style="width:70%; height:70%; object-fit:contain;">
+                                </div>
+                                <div class="soft-name">${soft.name}</div>
+                            </div>
+                            <div class="soft-category-tag"><i class="fa-regular fa-folder"></i> ${soft.categoryName}</div>
+                            <div class="soft-desc">${soft.desc}</div>
+                            <div class="domain-row">
+                                <i class="fa-regular fa-globe"></i>
+                                <span class="domain-name">${soft.domain}</span>
+                                <button class="copy-domain" onclick="copyDomain(this, '${soft.domain}')" data-tooltip="复制域名" title="复制域名"><i class="fa-regular fa-clipboard"></i></button>
+                            </div>
+                            <a href="${soft.url}" class="visit-btn" target="_blank" rel="noopener noreferrer">
+                                访问官网 <i class="fa-regular fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    `;
+                });
+                gridContainer.innerHTML = cardsHtml;
+            }
+
+            window.handleIconError = function(img) {
+                const retry = parseInt(img.getAttribute('data-retry') || '0', 10);
+                if (retry === 0) {
+                    img.src = img.getAttribute('data-fallback');
+                    img.setAttribute('data-retry', '1');
+                } else if (retry === 1) {
+                    const parent = img.parentNode;
+                    parent.innerHTML = '<i class="fa-regular fa-image" style="color: white; font-size: 2rem;"></i>';
+                }
+            };
+
+            renderTabs();
+            filterAndRenderCards();
+
+            window.copyDomain = function(btn, domain) {
+                if (navigator.clipboard) {
+                    navigator.clipboard.writeText(domain).then(() => {
+                        showCopySuccess(btn);
+                    }).catch(() => {
+                        fallbackCopy(domain, btn);
+                    });
+                } else {
+                    fallbackCopy(domain, btn);
+                }
+            };
+
+            function showCopySuccess(btn) {
+                const icon = btn.querySelector('i');
+                const originalClass = icon.className;
+                icon.className = 'fa-regular fa-circle-check';
+                btn.classList.add('success');
+                setTimeout(() => {
+                    icon.className = originalClass;
+                    btn.classList.remove('success');
+                }, 1500);
+            }
+
+            function fallbackCopy(domain, btn) {
+                const textarea = document.createElement('textarea');
+                textarea.value = domain;
+                document.body.appendChild(textarea);
+                textarea.select();
+                try {
+                    document.execCommand('copy');
+                    showCopySuccess(btn);
+                } catch (err) {
+                    alert('复制失败，请手动复制');
+                }
+                document.body.removeChild(textarea);
+            }
+        })();
+    </script>
+</body>
+</html>
