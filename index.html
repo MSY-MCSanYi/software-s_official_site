@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>分类·软件官网导航（新增123云盘Adobe免费版）</title>
+    <title>分类·软件官网导航（侧边栏版）</title>
     <!-- 字体 Inter & Font Awesome 6 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,10 +25,11 @@
         }
 
         .container {
-            max-width: 1280px;
+            max-width: 1400px;
             margin: 0 auto;
         }
 
+        /* 头部 */
         .page-header {
             text-align: center;
             margin-bottom: 40px;
@@ -57,6 +58,7 @@
             box-shadow: 0 4px 12px rgba(0,0,0,0.02);
         }
 
+        /* 安全横幅 */
         .safety-banner {
             background: #dbeafecc;
             backdrop-filter: blur(8px);
@@ -90,60 +92,89 @@
             flex-wrap: wrap;
         }
 
-        .category-tabs {
+        /* 主要内容区域：侧边栏 + 网格 */
+        .main-content {
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 12px 18px;
-            margin-bottom: 48px;
+            gap: 30px;
+            margin-top: 20px;
         }
 
-        .category-btn {
-            background: rgba(255,255,255,0.7);
-            backdrop-filter: blur(4px);
+        /* 侧边栏分类 */
+        .sidebar {
+            flex: 0 0 240px;
+            background: rgba(255,255,255,0.6);
+            backdrop-filter: blur(12px);
+            border-radius: 36px;
+            padding: 24px 16px;
             border: 1px solid rgba(255,255,255,0.9);
-            padding: 12px 28px;
-            border-radius: 60px;
+            box-shadow: 0 20px 30px -10px rgba(0,30,70,0.1);
+            height: fit-content;
+            position: sticky;
+            top: 30px;
+        }
+
+        .category-tabs-sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .category-btn-sidebar {
+            background: transparent;
+            border: none;
+            border-radius: 40px;
+            padding: 14px 20px;
             font-size: 1.1rem;
             font-weight: 600;
             color: #1e2f5a;
             cursor: pointer;
             transition: all 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
+            width: 100%;
+            text-align: left;
+            border: 1px solid transparent;
         }
 
-        .category-btn i {
-            font-size: 1.2rem;
+        .category-btn-sidebar i {
+            font-size: 1.3rem;
             color: #3b5f9e;
+            width: 28px;
+            text-align: center;
         }
 
-        .category-btn.active {
+        .category-btn-sidebar.active {
             background: #2563eb;
             color: white;
             border-color: #2563eb;
-            box-shadow: 0 10px 20px -5px #1e3a8a80;
+            box-shadow: 0 8px 16px -6px #1e3a8a80;
         }
 
-        .category-btn.active i {
+        .category-btn-sidebar.active i {
             color: white;
         }
 
-        .category-btn:hover {
-            background: white;
-            transform: translateY(-2px);
+        .category-btn-sidebar:hover:not(.active) {
+            background: rgba(255,255,255,0.8);
+            border-color: #cdddf5;
+            transform: translateX(4px);
+        }
+
+        /* 右侧网格区域 */
+        .grid-area {
+            flex: 1;
+            min-width: 0; /* 防止溢出 */
         }
 
         .software-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 28px;
-            margin-bottom: 60px;
             transition: 0.3s;
         }
 
+        /* 卡片样式（保持不变） */
         .soft-card {
             background: rgba(255,255,255,0.8);
             backdrop-filter: blur(12px);
@@ -313,15 +344,41 @@
             border-top: 1px dashed #b0c8e0;
             color: #52688a;
             font-size: 0.95rem;
+            margin-top: 40px;
         }
 
-        @media (max-width: 600px) {
-            .page-header h1 {
-                font-size: 2.4rem;
+        /* 响应式：移动端改为顶部横向滚动 */
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+                gap: 20px;
             }
-            .category-btn {
-                padding: 8px 18px;
-                font-size: 0.95rem;
+
+            .sidebar {
+                flex: none;
+                width: 100%;
+                position: static;
+                padding: 16px 12px;
+                border-radius: 30px;
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            .category-tabs-sidebar {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                gap: 10px;
+            }
+
+            .category-btn-sidebar {
+                padding: 12px 20px;
+                white-space: nowrap;
+                width: auto;
+                flex-shrink: 0;
+            }
+
+            .category-btn-sidebar:hover:not(.active) {
+                transform: translateY(-2px);
             }
         }
 
@@ -357,7 +414,7 @@
     <div class="container">
         <div class="page-header">
             <h1><i class="fa-regular fa-compass"></i> 分类·软件官网导航</h1>
-            <p><i class="fa-regular fa-circle-check" style="color:#2e7d32;"></i> 新增123云盘Adobe免费版（非官方）</p>
+            <p><i class="fa-regular fa-circle-check" style="color:#2e7d32;"></i> 侧边栏分类 · 双源图标保障</p>
         </div>
 
         <div class="safety-banner">
@@ -365,17 +422,25 @@
             <span class="hint"><i class="fa-regular fa-eye"></i> 官方链接为主，第三方资源请自行甄别</span>
         </div>
 
-        <div class="category-tabs" id="categoryTabs"></div>
-        <div class="software-grid" id="softwareGrid"></div>
+        <!-- 主要内容：侧边栏 + 网格 -->
+        <div class="main-content">
+            <!-- 侧边栏分类容器 (由JS动态生成) -->
+            <div class="sidebar" id="sidebar"></div>
+
+            <!-- 右侧卡片网格 -->
+            <div class="grid-area">
+                <div class="software-grid" id="softwareGrid"></div>
+            </div>
+        </div>
 
         <div class="footer-note">
-            <p><i class="fa-regular fa-heart" style="color:#e35f5f;"></i> 安全导航 · 请始终核实域名后缀 · 双源图标保障</p>
+            <p><i class="fa-regular fa-heart" style="color:#e35f5f;"></i> 安全导航 · 请始终核实域名后缀 · 侧边栏分类</p>
         </div>
     </div>
 
     <script>
         (function() {
-            // 软件数据 —— 已添加123云盘Adobe免费版，使用123pan.com图标
+            // 软件数据 —— 已修复Google Chrome图标 (改为google.com)
             const softwareList = [
                 // 杀毒软件
                 { name: 'Malwarebytes', domain: 'malwarebytes.com', url: 'https://www.malwarebytes.com', category: 'security', categoryName: '杀毒软件', color: '#232e4d', desc: '专业反恶意软件，防护勒索病毒与木马，轻量高效。' },
@@ -394,7 +459,7 @@
                 { name: 'Adobe Premiere Pro', domain: 'adobe.com', url: 'https://www.adobe.com/products/premiere.html', category: 'adobe', categoryName: 'Adobe系列', color: '#9999ff', desc: '专业视频剪辑与后期制作，强大时间线。' },
                 { name: 'Adobe Illustrator', domain: 'adobe.com', url: 'https://www.adobe.com/products/illustrator.html', category: 'adobe', categoryName: 'Adobe系列', color: '#f15a24', desc: '矢量图形绘制，LOGO、插画、印刷设计必备。' },
                 { name: 'Adobe Audition', domain: 'adobe.com', url: 'https://www.adobe.com/products/audition.html', category: 'adobe', categoryName: 'Adobe系列', color: '#9999cc', desc: '专业音频编辑与混音软件，提供强大的音频修复和降噪工具。' },
-                // 新增123云盘Adobe免费版（使用123pan.com图标，链接为用户提供的123865.com）
+                // 123云盘Adobe免费版
                 { name: 'Adobe软件系列免费版', domain: '123pan.com', url: 'https://www.123865.com/s/i5hBjv-wqmnd', category: 'adobe', categoryName: 'Adobe系列', color: '#ff9f4b', desc: '123云盘分享的Adobe免费版合集（非官方渠道，请自行辨别安全）' },
                 
                 // 办公协作
@@ -405,11 +470,12 @@
                 { name: 'OBS Studio', domain: 'obsproject.com', url: 'https://obsproject.com', category: 'office', categoryName: '办公协作', color: '#302e2e', desc: '免费开源的直播和录屏软件，广泛用于视频录制与推流。' },
 
                 // 浏览器分类
-                { name: 'Google Chrome', domain: 'chrome.google.com', url: 'https://www.google.cn/intl/zh-CN/chrome/', category: 'browser', categoryName: '浏览器', color: '#4285F4', desc: '快速、安全的现代浏览器，支持扩展同步与强大生态。' },
+                { name: 'Google Chrome', domain: 'google.com', url: 'https://www.google.com/chrome/', category: 'browser', categoryName: '浏览器', color: '#4285F4', desc: '快速、安全的现代浏览器，支持扩展同步与强大生态。' },
                 { name: 'Microsoft Edge', domain: 'microsoft.com', url: 'https://www.microsoft.com/edge', category: 'browser', categoryName: '浏览器', color: '#0078d7', desc: '基于Chromium的浏览器，与微软服务深度集成，性能优秀。' },
                 { name: 'Firefox', domain: 'firefox.com', url: 'https://www.mozilla.org/firefox/', category: 'browser', categoryName: '浏览器', color: '#ff7139', desc: '注重隐私的开源浏览器，丰富的扩展与自定义选项。' }
             ];
 
+            // 分类定义
             const categories = [
                 { id: 'all', name: '全部', icon: 'fa-regular fa-star' },
                 { id: 'security', name: '杀毒软件', icon: 'fa-solid fa-shield' },
@@ -419,20 +485,23 @@
                 { id: 'browser', name: '浏览器', icon: 'fa-solid fa-window-maximize' }
             ];
 
-            const tabsContainer = document.getElementById('categoryTabs');
+            const sidebarContainer = document.getElementById('sidebar');
             const gridContainer = document.getElementById('softwareGrid');
             let currentCategory = 'all';
 
-            function renderTabs() {
-                tabsContainer.innerHTML = '';
+            // 渲染侧边栏分类按钮
+            function renderSidebar() {
+                sidebarContainer.innerHTML = '<div class="category-tabs-sidebar" id="categoryTabsSidebar"></div>';
+                const tabsContainer = document.getElementById('categoryTabsSidebar');
                 categories.forEach(cat => {
-                    const btn = document.createElement('div');
-                    btn.className = `category-btn ${currentCategory === cat.id ? 'active' : ''}`;
+                    const btn = document.createElement('button');
+                    btn.className = `category-btn-sidebar ${currentCategory === cat.id ? 'active' : ''}`;
                     btn.setAttribute('data-category', cat.id);
                     btn.innerHTML = `<i class="${cat.icon}"></i> ${cat.name}`;
                     btn.addEventListener('click', () => {
                         currentCategory = cat.id;
-                        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                        // 更新所有按钮激活状态
+                        document.querySelectorAll('.category-btn-sidebar').forEach(b => b.classList.remove('active'));
                         btn.classList.add('active');
                         filterAndRenderCards();
                     });
@@ -486,6 +555,7 @@
                 gridContainer.innerHTML = cardsHtml;
             }
 
+            // 图标错误处理
             window.handleIconError = function(img) {
                 const retry = parseInt(img.getAttribute('data-retry') || '0', 10);
                 if (retry === 0) {
@@ -497,9 +567,7 @@
                 }
             };
 
-            renderTabs();
-            filterAndRenderCards();
-
+            // 复制域名
             window.copyDomain = function(btn, domain) {
                 if (navigator.clipboard) {
                     navigator.clipboard.writeText(domain).then(() => {
@@ -536,6 +604,10 @@
                 }
                 document.body.removeChild(textarea);
             }
+
+            // 初始化
+            renderSidebar();
+            filterAndRenderCards();
         })();
     </script>
 </body>
