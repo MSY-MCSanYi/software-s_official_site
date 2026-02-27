@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>分类·软件官网导航（新增音乐区）</title>
+    <title>添加毛玻璃，背景</title>
     <!-- 字体 Inter & Font Awesome 6 -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,10 +18,24 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background: #f0f7fd;
+            background: url('sky.png') no-repeat center center fixed;
+            background-size: cover;
             color: #1a2b4a;
             min-height: 100vh;
             padding: 0;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255,255,255,0.15);
+            pointer-events: none;
+            z-index: -1;
         }
 
         .container {
@@ -45,23 +59,26 @@
             -webkit-text-fill-color: transparent;
             background-clip: text;
             margin-bottom: 16px;
+            text-shadow: 0 2px 10px rgba(255,255,255,0.5);
         }
 
         .page-header p {
             font-size: 1.3rem;
-            color: #2c405c;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(8px);
+            color: #0e1a2c;
+            background: rgba(255,255,255,0.12);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: inline-block;
             padding: 10px 30px;
             border-radius: 60px;
-            border: 1px solid rgba(255,255,255,0.8);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            border: 1px solid rgba(255,255,255,0.3);
+            box-shadow: 0 8px 20px rgba(0,20,40,0.1);
         }
 
         .safety-banner {
-            background: #dbeafecc;
-            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 80px;
             padding: 16px 28px;
             display: flex;
@@ -71,22 +88,26 @@
             gap: 20px 30px;
             margin-bottom: 40px;
             margin-left: 20px;
-            border: 1px solid white;
+            border: 1px solid rgba(255,255,255,0.2);
+            box-shadow: 0 10px 25px -8px rgba(0,30,70,0.15);
             font-weight: 500;
+            color: #0e1a2c;
         }
 
         .safety-banner .badge {
-            background: #1e3a8a;
+            background: rgba(30,58,138,0.5);
+            backdrop-filter: blur(4px);
             color: white;
             padding: 8px 20px;
             border-radius: 60px;
             display: flex;
             align-items: center;
             gap: 8px;
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .safety-banner .hint {
-            color: #1e2f5a;
+            color: #0e1a2c;
             display: flex;
             align-items: center;
             gap: 10px;
@@ -101,14 +122,14 @@
 
         .sidebar {
             flex: 0 0 280px;
-            background: rgba(255,255,255,0.7);
+            background: rgba(255,255,255,0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: 0 28px 28px 0;
             padding: 24px 12px 24px 16px;
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.15);
             border-left: none;
-            box-shadow: 4px 10px 30px -10px rgba(0,30,70,0.15), 0 0 0 1px rgba(255,255,255,0.5) inset;
+            box-shadow: 4px 10px 30px -10px rgba(0,30,70,0.1), 0 0 0 1px rgba(255,255,255,0.1) inset;
             height: fit-content;
             position: sticky;
             top: 20px;
@@ -116,7 +137,7 @@
         }
 
         .sidebar:hover {
-            box-shadow: 4px 15px 35px -8px rgba(0,30,70,0.25), 0 0 0 1px rgba(255,255,255,0.7) inset;
+            box-shadow: 4px 15px 35px -8px rgba(0,30,70,0.2), 0 0 0 1px rgba(255,255,255,0.15) inset;
         }
 
         .category-section {
@@ -131,14 +152,17 @@
             margin-bottom: 4px;
             border-radius: 12px;
             cursor: pointer;
-            color: #1e2f5a;
+            color: #0e1a2c;
             font-weight: 600;
             font-size: 1rem;
             transition: background 0.2s ease, transform 0.1s ease;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.08);
         }
 
         .section-header:hover {
-            background: rgba(255,255,255,0.6);
+            background: rgba(255,255,255,0.15);
             transform: translateX(2px);
         }
 
@@ -148,7 +172,7 @@
 
         .section-header i:first-child {
             font-size: 1.3rem;
-            color: #3b5f9e;
+            color: #2a4570;
             margin-right: 12px;
             transition: color 0.2s;
         }
@@ -164,7 +188,7 @@
 
         .section-header .chevron {
             font-size: 1rem;
-            color: #6a7f9f;
+            color: #556a8a;
             transition: transform 0.3s ease, color 0.2s;
         }
 
@@ -188,13 +212,14 @@
         }
 
         .category-btn-sidebar {
-            background: transparent;
-            border: none;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 12px;
             padding: 10px 16px 10px 12px;
             font-size: 1rem;
             font-weight: 500;
-            color: #1e2f5a;
+            color: #0e1a2c;
             cursor: pointer;
             transition: all 0.2s ease;
             display: flex;
@@ -202,22 +227,22 @@
             gap: 12px;
             width: 100%;
             text-align: left;
-            border: 1px solid transparent;
             margin: 2px 0;
         }
 
         .category-btn-sidebar i {
             font-size: 1.2rem;
-            color: #3b5f9e;
+            color: #2a4570;
             width: 24px;
             text-align: center;
             transition: color 0.2s, transform 0.2s;
         }
 
         .category-btn-sidebar.active {
-            background: #2563eb;
+            background: rgba(37,99,235,0.35);
+            backdrop-filter: blur(8px);
             color: white;
-            border-color: #ffffff60;
+            border-color: rgba(255,255,255,0.3);
             box-shadow: 0 6px 12px -6px #1e3a8a;
             transform: scale(1.02);
         }
@@ -228,22 +253,23 @@
         }
 
         .category-btn-sidebar:hover:not(.active) {
-            background: rgba(255,255,255,0.9);
-            border-color: #cdddf5;
+            background: rgba(255,255,255,0.15);
+            border-color: rgba(255,255,255,0.25);
             transform: translateX(6px) scale(1.01);
         }
 
         .all-button {
             margin-bottom: 16px;
             padding: 12px 18px;
-            background: rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(8px);
             border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.8);
+            border: 1px solid rgba(255,255,255,0.12);
             transition: background 0.2s;
         }
 
         .all-button:hover {
-            background: rgba(255,255,255,0.8);
+            background: rgba(255,255,255,0.15);
         }
 
         .grid-area {
@@ -255,7 +281,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 28px;
-            transition: opacity 0.2s ease, transform 0.2s ease;
+            transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out;
         }
 
         .software-grid.fade-out {
@@ -263,22 +289,36 @@
             transform: scale(0.98);
         }
 
+        @keyframes cardEnter {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         .soft-card {
-            background: rgba(255,255,255,0.8);
-            backdrop-filter: blur(12px);
+            background: rgba(255,255,255,0.06);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border-radius: 36px;
             padding: 24px 24px 28px;
-            border: 1px solid rgba(255,255,255,0.9);
-            box-shadow: 0 20px 30px -10px rgba(0,30,70,0.15);
+            border: 1px solid rgba(255,255,255,0.15);
+            box-shadow: 0 20px 30px -10px rgba(0,30,70,0.08), 0 0 0 1px rgba(255,255,255,0.08) inset;
             transition: all 0.25s;
             display: flex;
             flex-direction: column;
+            animation: cardEnter 0.5s ease-out;
         }
 
         .soft-card:hover {
             transform: translateY(-6px);
-            background: rgba(255,255,255,0.95);
+            background: rgba(255,255,255,0.15);
             box-shadow: 0 25px 40px -12px #1e3a8a70;
+            border-color: rgba(255,255,255,0.25);
         }
 
         .card-header {
@@ -291,17 +331,19 @@
         .icon-bg {
             width: 56px;
             height: 56px;
-            background: linear-gradient(135deg, #2563eb, #7c3aed);
+            background: linear-gradient(135deg, rgba(37,99,235,0.55), rgba(124,58,237,0.55));
+            backdrop-filter: blur(4px);
             border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
             color: white;
             font-size: 2rem;
-            box-shadow: 0 8px 14px -4px #2563eb80;
+            box-shadow: 0 8px 14px -4px rgba(37,99,235,0.3);
             flex-shrink: 0;
             overflow: hidden;
             transition: box-shadow 0.2s;
+            border: 1px solid rgba(255,255,255,0.25);
         }
 
         .soft-card:hover .icon-bg {
@@ -313,6 +355,7 @@
             height: 70%;
             object-fit: contain;
             transition: transform 0.2s;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
         }
 
         .soft-card:hover .icon-bg img {
@@ -322,56 +365,60 @@
         .soft-name {
             font-size: 1.7rem;
             font-weight: 700;
-            color: #102a44;
+            color: #08121f;
             line-height: 1.2;
+            text-shadow: 0 1px 4px rgba(255,255,255,0.7);
         }
 
         .soft-category-tag {
-            background: #e0e9f5;
+            background: rgba(224,233,245,0.25);
+            backdrop-filter: blur(4px);
             border-radius: 30px;
             padding: 6px 16px;
             font-size: 0.8rem;
             font-weight: 600;
-            color: #1e3f70;
+            color: #0f2a44;
             display: inline-block;
             margin: 8px 0 12px;
             width: fit-content;
-            border: 1px solid #ffffff;
+            border: 1px solid rgba(255,255,255,0.25);
             transition: background 0.2s;
         }
 
         .soft-card:hover .soft-category-tag {
-            background: #d0e0f0;
+            background: rgba(208,224,240,0.4);
         }
 
         .soft-desc {
-            color: #364f6b;
+            color: #0e1f33;
             font-size: 0.95rem;
             margin: 6px 0 16px;
             flex: 1;
             line-height: 1.6;
+            text-shadow: 0 1px 3px rgba(255,255,255,0.5);
         }
 
         .domain-row {
-            background: #edf3fc;
+            background: rgba(237,243,252,0.2);
+            backdrop-filter: blur(4px);
             border-radius: 40px;
             padding: 10px 16px;
             display: flex;
             align-items: center;
             justify-content: space-between;
             margin: 10px 0 18px;
-            border: 1px solid white;
+            border: 1px solid rgba(255,255,255,0.25);
             transition: background 0.2s, box-shadow 0.2s;
         }
 
         .soft-card:hover .domain-row {
-            background: #e0ebff;
+            background: rgba(224,235,255,0.3);
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
 
         .domain-name {
             font-weight: 500;
-            color: #1a3563;
+            color: #0a1e36;
             font-family: monospace;
             word-break: break-all;
             padding: 0 6px;
@@ -379,9 +426,10 @@
         }
 
         .copy-domain {
-            background: white;
-            border: none;
-            color: #4f658d;
+            background: rgba(255,255,255,0.35);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: #1f3b60;
             cursor: pointer;
             font-size: 1.1rem;
             width: 32px;
@@ -394,13 +442,13 @@
         }
 
         .copy-domain:hover {
-            background: #e0ebff;
+            background: rgba(255,255,255,0.65);
             color: #2563eb;
             transform: scale(1.1);
         }
 
         .copy-domain.success {
-            background: #22c55e;
+            background: rgba(34,197,94,0.5);
             color: white;
             animation: pop 0.3s ease;
         }
@@ -416,23 +464,24 @@
             align-items: center;
             justify-content: center;
             gap: 10px;
-            background: #e9f0fe;
+            background: rgba(233,240,254,0.15);
+            backdrop-filter: blur(8px);
             border-radius: 60px;
             padding: 14px 8px;
             text-decoration: none;
-            color: #1d3d78;
+            color: #0a1c32;
             font-weight: 600;
             font-size: 1.1rem;
             transition: all 0.25s;
-            border: 1px solid white;
-            border-bottom: 3px solid #b7c9e2;
+            border: 1px solid rgba(255,255,255,0.2);
+            border-bottom: 3px solid rgba(183,201,226,0.3);
             margin-top: 8px;
         }
 
         .visit-btn:hover {
-            background: #2563eb;
+            background: rgba(37,99,235,0.35);
             color: white;
-            border-bottom-color: #0f2b62;
+            border-bottom-color: rgba(15,43,98,0.5);
             transform: translateY(-2px);
         }
 
@@ -448,19 +497,20 @@
             grid-column: 1 / -1;
             text-align: center;
             padding: 60px 20px;
-            background: rgba(255,255,255,0.6);
-            backdrop-filter: blur(8px);
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(16px);
             border-radius: 60px;
             font-size: 1.4rem;
-            color: #52688a;
-            border: 1px solid white;
+            color: #0e1a2c;
+            border: 1px solid rgba(255,255,255,0.2);
+            animation: cardEnter 0.5s ease-out;
         }
 
         .footer-note {
             text-align: center;
             padding: 30px 20px 10px;
-            border-top: 1px dashed #b0c8e0;
-            color: #52688a;
+            border-top: 1px dashed rgba(176,200,224,0.3);
+            color: #2a4570;
             font-size: 0.95rem;
             margin-top: 40px;
             margin-left: 20px;
@@ -479,7 +529,7 @@
                 width: 100%;
                 position: static;
                 border-radius: 28px;
-                border-left: 1px solid rgba(255,255,255,0.8);
+                border-left: 1px solid rgba(255,255,255,0.2);
                 padding: 16px 12px;
             }
             .section-content {
@@ -507,7 +557,8 @@
             bottom: 130%;
             left: 50%;
             transform: translateX(-50%);
-            background: #1e293b;
+            background: rgba(30,41,59,0.7);
+            backdrop-filter: blur(4px);
             color: white;
             padding: 4px 10px;
             border-radius: 20px;
@@ -516,6 +567,7 @@
             display: none;
             z-index: 100;
             animation: fadeIn 0.2s;
+            border: 1px solid rgba(255,255,255,0.2);
         }
         [data-tooltip]:hover:before {
             display: block;
@@ -534,7 +586,7 @@
     <div class="container">
         <div class="page-header">
             <h1><i class="fa-regular fa-compass"></i> 分类·软件官网导航</h1>
-            <p><i class="fa-regular fa-circle-check" style="color:#2e7d32;"></i> 新增音乐区 · MoeKoeMusic</p>
+            <p><i class="fa-regular fa-circle-check" style="color:#2e7d32;"></i> 自然切换动画 · 图标在线获取</p>
         </div>
 
         <div class="safety-banner">
@@ -556,7 +608,7 @@
 
     <script>
         (function() {
-            // 软件数据 —— 新增 MoeKoeMusic（音乐区）
+            // 软件数据 —— Adobe系列使用在线图标服务（无 iconUrl 字段）
             const softwareList = [
                 // 杀毒软件
                 { name: 'Malwarebytes', domain: 'malwarebytes.com', url: 'https://www.malwarebytes.com', category: 'security', categoryName: '杀毒软件', color: '#232e4d', desc: '专业反恶意软件，防护勒索病毒与木马，轻量高效。' },
@@ -579,7 +631,7 @@
                 { name: 'Sublime Text', domain: 'sublimetext.com', url: 'https://www.sublimetext.com', category: 'dev', categoryName: '代码工具', color: '#ff9800', desc: '轻量、快速、高度可定制的代码与文本编辑器。' },
                 { name: 'JetBrains Toolbox', domain: 'jetbrains.com', url: 'https://www.jetbrains.com/toolbox/', category: 'dev', categoryName: '代码工具', color: '#000000', desc: 'IntelliJ IDEA, PyCharm 等IDE的集成管理工具。' },
                 
-                // Adobe系列
+                // Adobe系列 —— 全部使用在线图标（无 iconUrl 字段）
                 { name: 'Adobe Photoshop', domain: 'adobe.com', url: 'https://www.adobe.com/products/photoshop.html', category: 'adobe', categoryName: 'Adobe系列', color: '#31a8ff', desc: '专业图像合成与设计软件，行业标准。' },
                 { name: 'Adobe Premiere Pro', domain: 'adobe.com', url: 'https://www.adobe.com/products/premiere.html', category: 'adobe', categoryName: 'Adobe系列', color: '#9999ff', desc: '专业视频剪辑与后期制作，强大时间线。' },
                 { name: 'Adobe Illustrator', domain: 'adobe.com', url: 'https://www.adobe.com/products/illustrator.html', category: 'adobe', categoryName: 'Adobe系列', color: '#f15a24', desc: '矢量图形绘制，LOGO、插画、印刷设计必备。' },
@@ -598,7 +650,7 @@
                 { name: 'Microsoft Edge', domain: 'microsoft.com', url: 'https://www.microsoft.com/edge', category: 'browser', categoryName: '浏览器', color: '#0078d7', desc: '基于Chromium的浏览器，与微软服务深度集成，性能优秀。' },
                 { name: 'Firefox', domain: 'firefox.com', url: 'https://www.mozilla.org/firefox/', category: 'browser', categoryName: '浏览器', color: '#ff7139', desc: '注重隐私的开源浏览器，丰富的扩展与自定义选项。' },
 
-                // 新增音乐区
+                // 音乐区
                 { 
                     name: 'MoeKoeMusic', 
                     domain: 'music.moekoe.cn', 
@@ -611,14 +663,14 @@
                 }
             ];
 
-            // 子分类定义 —— 新增“音乐区”
+            // 子分类定义
             const subCategories = [
                 { id: 'security', name: '杀毒软件', icon: 'fa-solid fa-shield', section: 'computer' },
                 { id: 'dev', name: '代码工具', icon: 'fa-solid fa-code', section: 'computer' },
                 { id: 'adobe', name: 'Adobe系列', icon: 'fa-brands fa-adobe', section: 'computer' },
                 { id: 'office', name: '办公协作', icon: 'fa-regular fa-message', section: 'computer' },
                 { id: 'browser', name: '浏览器', icon: 'fa-solid fa-window-maximize', section: 'computer' },
-                { id: 'music', name: '音乐区', icon: 'fa-solid fa-music', section: 'computer' }, // 新增
+                { id: 'music', name: '音乐区', icon: 'fa-solid fa-music', section: 'computer' },
                 { id: 'mobile', name: '手机应用（暂无）', icon: 'fa-solid fa-mobile-screen', section: 'mobile' }
             ];
 
@@ -779,8 +831,8 @@
                     
                     setTimeout(() => {
                         isAnimating = false;
-                    }, 200);
-                }, 150);
+                    }, 300);
+                }, 200);
             }
 
             window.handleFixedIconError = function(img) {
